@@ -35,103 +35,111 @@ st.markdown("""
 # --- Custom CSS for Dark UI and Animation ---
 st.markdown("""
     <style>
-    /* Global Background and Text */
-    body {
-        background-color: #FFFFFF;
-        color: #111111;
-        font-family: 'Segoe UI', sans-serif;
-    }
+/* ---------- GLOBAL STYLES ---------- */
 
-    .main {
-        background-color: #FFFFFF;
-    }
+/* Pure White Background & Deep Black Text */
+body, .main {
+    background-color: #FFFFFF;  /* Background: White */
+    color: #111111;             /* Text: Near Black */
+    font-family: 'Segoe UI', sans-serif;
+}
 
-    /* Typewriter Header */
-    .typewriter-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 30px;
-    }
+.stApp {
+    background-color: #FFFFFF;  /* Ensure main app area is White */
+}
 
+/* ---------- TYPEWRITER HEADER ---------- */
+
+.typewriter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.typewriter-text {
+    overflow: hidden;
+    border-right: 2px solid #007ACC;  /* Accent: Calm Blue */
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+    animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    font-size: 24px;
+    font-weight: 700;
+    color: #111111;  /* Header Text: Near Black */
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #007ACC; }  /* Accent: Calm Blue */
+}
+
+/* ---------- TITLE STYLING ---------- */
+
+h1, h2, h3, h4, h5, h6 {
+    color: #111111;  /* Headings: Near Black */
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.stApp h1 {
+    border-bottom: 2px solid #007ACC;  /* Accent Underline: Calm Blue */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* ---------- INPUT FOCUS ---------- */
+
+input:focus, textarea:focus {
+    border: 2px solid #007ACC !important;  /* Focus Border: Calm Blue */
+    box-shadow: 0 0 6px #007ACC;           /* Focus Glow: Calm Blue */
+    outline: none !important;
+    transition: all 0.2s ease-in-out;
+}
+
+/* ---------- CHAT BUBBLES ---------- */
+
+.stChatMessage {
+    background-color: #F9F9F9 !important;  /* Bubble Background: Light Grey */
+    border-radius: 10px;
+    padding: 14px;
+    color: #111111;  /* Bubble Text: Near Black */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  /* Soft Shadow: subtle depth */
+}
+
+/* ---------- GENERAL CARD SHADOW ---------- */
+
+.stMarkdown, .stTextInput, .stTextArea, .stButton {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);  /* Subtle Shadow for inputs/buttons */
+    border-radius: 6px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 600px) {
     .typewriter-text {
-        overflow: hidden;
-        border-right: .15em solid #007ACC;
-        white-space: nowrap;
-        margin: 0 auto;
-        letter-spacing: .08em;
-        animation: 
-            typing 3s steps(40, end),
-            blink-caret .75s step-end infinite;
-        font-size: 22px;
-        font-weight: bold;
-        color: #111111;
+        font-size: 18px;
     }
-
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-        from, to { border-color: transparent }
-        50% { border-color: #007ACC; }
-    }
-
-    /* Title Styling with Subtle Pulse */
     .stApp h1 {
-        animation: pulse 5s ease-in-out infinite;
-        color: #111111;
-        font-weight: 800;
+        font-size: 24px;
     }
+}
 
-    @keyframes pulse {
-        0% { color: #111111; }
-        50% { color: #007ACC; }
-        100% { color: #111111; }
-    }
-
-    /* Input Focus Styling */
-    input:focus {
-        border: 2px solid #007ACC !important;
-        box-shadow: 0 0 8px #007ACC;
-        transition: all 0.3s ease-in-out;
-    }
-
-    /* Chat Message Bubbles (Light Grey) */
-    .stChatMessage {
-        background-color: #F5F5F5 !important;
-        border-radius: 8px;
-        padding: 12px;
-        color: #111111;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-        .typewriter-text {
-            font-size: 16px;
-            letter-spacing: 0.05em;
-        }
-
-        .stApp h1 {
-            font-size: 24px;
-        }
-
-        .main, .block-container {
-            padding-left: 12px;
-            padding-right: 12px;
-        }
-    }
-    </style>
+</style>
 """, unsafe_allow_html=True)
 
-# --- Animated Typewriter Header ---
+# --- Typewriter Header ---
 st.markdown("""
-    <div class="typewriter-container">
-        <div class="typewriter-text">PDC RAG CHATBOT BY MUZAMMIL YASIR</div>
-    </div>
+<div class="typewriter-container">
+    <div class="typewriter-text">PDC RAG CHATBOT BY MUZAMMIL YASIR</div>
+</div>
 """, unsafe_allow_html=True)
 
+# --- Main Title ---
 st.title("Ask Neura Thread")
 
 # --- Chat History Setup ---
