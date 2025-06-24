@@ -35,37 +35,29 @@ st.markdown("""
 # --- Custom CSS for Dark UI and Animation ---
 st.markdown("""
     <style>
-/* ---------- GLOBAL STYLES ---------- */
-
-/* Pure White Background & Deep Black Text */
-body, .main {
-    background-color: #FFFFFF;  /* Background: White */
-    color: #111111;             /* Text: Near Black */
+/* ---------- BODY & BASE ---------- */
+body, .main, .stApp {
+    background-color: #FFFFFF;  /* Pure White Background */
+    color: #111111;             /* Deep Black Text */
     font-family: 'Segoe UI', sans-serif;
 }
 
-.stApp {
-    background-color: #FFFFFF;  /* Ensure main app area is White */
-}
-
-/* ---------- TYPEWRITER HEADER ---------- */
-
+/* ---------- HEADER: TYPEWRITER ---------- */
 .typewriter-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
+    margin: 40px 0 20px 0; /* More breathing space */
 }
 
 .typewriter-text {
     overflow: hidden;
-    border-right: 2px solid #007ACC;  /* Accent: Calm Blue */
+    border-right: 2px solid #007ACC;  /* Calm Blue Caret */
     white-space: nowrap;
     letter-spacing: 0.06em;
     animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
-    font-size: 24px;
-    font-weight: 700;
-    color: #111111;  /* Header Text: Near Black */
+    font-size: 26px;
+    font-weight: 800;
+    color: #111111;
 }
 
 @keyframes typing {
@@ -75,71 +67,67 @@ body, .main {
 
 @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: #007ACC; }  /* Accent: Calm Blue */
+    50% { border-color: #007ACC; }
 }
 
-/* ---------- TITLE STYLING ---------- */
-
-h1, h2, h3, h4, h5, h6 {
-    color: #111111;  /* Headings: Near Black */
-    font-weight: 800;
-    margin-top: 10px;
-}
-
-.stApp h1 {
-    border-bottom: 2px solid #007ACC;  /* Accent Underline: Calm Blue */
+/* ---------- MAIN TITLE ---------- */
+h1 {
+    color: #111111;  /* Solid Black Title */
+    font-weight: 900;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #007ACC;  /* Accent Blue underline */
     display: inline-block;
-    padding-bottom: 5px;
+    padding-bottom: 6px;
 }
 
-/* ---------- INPUT FOCUS ---------- */
+/* ---------- INPUT FIELDS ---------- */
+input, textarea {
+    border-radius: 8px !important;
+}
 
 input:focus, textarea:focus {
-    border: 2px solid #007ACC !important;  /* Focus Border: Calm Blue */
-    box-shadow: 0 0 6px #007ACC;           /* Focus Glow: Calm Blue */
+    border: 2px solid #007ACC !important;  /* Accent Blue Focus */
+    box-shadow: 0 0 6px #007ACC;
     outline: none !important;
-    transition: all 0.2s ease-in-out;
+    transition: 0.2s ease;
 }
 
 /* ---------- CHAT BUBBLES ---------- */
-
 .stChatMessage {
-    background-color: #F9F9F9 !important;  /* Bubble Background: Light Grey */
+    background: #F2F4F5 !important;  /* Light Grey Bubble */
     border-radius: 10px;
-    padding: 14px;
-    color: #111111;  /* Bubble Text: Near Black */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  /* Soft Shadow: subtle depth */
+    padding: 16px;
+    margin-bottom: 10px;
+    color: #111111;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
-/* ---------- GENERAL CARD SHADOW ---------- */
-
-.stMarkdown, .stTextInput, .stTextArea, .stButton {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);  /* Subtle Shadow for inputs/buttons */
-    border-radius: 6px;
+/* ---------- BUTTONS ---------- */
+button {
+    border-radius: 6px !important;
 }
 
 /* ---------- RESPONSIVE ---------- */
-
 @media (max-width: 600px) {
     .typewriter-text {
-        font-size: 18px;
+        font-size: 20px;
     }
-    .stApp h1 {
+    h1 {
         font-size: 24px;
     }
 }
-
 </style>
 """, unsafe_allow_html=True)
 
-# --- Typewriter Header ---
+# --- CLEAN TYPEWRITER HEADER ---
 st.markdown("""
 <div class="typewriter-container">
     <div class="typewriter-text">PDC RAG CHATBOT BY MUZAMMIL YASIR</div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- Main Title ---
+# --- SOLID MAIN TITLE ---
 st.title("Ask Neura Thread")
 
 # --- Chat History Setup ---
