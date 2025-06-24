@@ -35,23 +35,23 @@ st.markdown("""
 # --- Custom CSS for Dark UI and Animation ---
 st.markdown("""
     <style>
-/* ---------- BODY & BASE ---------- */
+/* ---------- GLOBAL BASE ---------- */
 body, .main, .stApp {
-    background-color: #FFFFFF;  /* Pure White Background */
-    color: #111111;             /* Deep Black Text */
+    background-color: #FFFFFF;  /* Pure White */
+    color: #111111;             /* Deep Black */
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* ---------- HEADER: TYPEWRITER ---------- */
+/* ---------- TYPEWRITER HEADER ---------- */
 .typewriter-container {
     display: flex;
     justify-content: center;
-    margin: 40px 0 20px 0; /* More breathing space */
+    margin: 40px 0 20px 0;
 }
 
 .typewriter-text {
     overflow: hidden;
-    border-right: 2px solid #007ACC;  /* Calm Blue Caret */
+    border-right: 2px solid #007ACC;  /* Blue Caret */
     white-space: nowrap;
     letter-spacing: 0.06em;
     animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
@@ -72,40 +72,51 @@ body, .main, .stApp {
 
 /* ---------- MAIN TITLE ---------- */
 h1 {
-    color: #111111;  /* Solid Black Title */
+    color: #111111;  /* Black Title */
     font-weight: 900;
-    margin-top: 0px;
-    margin-bottom: 30px;
-    border-bottom: 3px solid #007ACC;  /* Accent Blue underline */
+    border-bottom: 3px solid #007ACC;
     display: inline-block;
     padding-bottom: 6px;
+    margin-bottom: 30px;
 }
 
-/* ---------- INPUT FIELDS ---------- */
+/* ---------- CHAT BUBBLES ---------- */
+.stChatMessage {
+    background: #F2F4F5 !important;  /* Light Grey Bubble */
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    color: #111111 !important;  /* Force Black Text */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* ---------- INPUT FIELD ---------- */
 input, textarea {
     border-radius: 8px !important;
+    color: #111111 !important;   /* Force Black Text */
+    background-color: #FFFFFF !important;  /* White background */
+}
+
+input::placeholder, textarea::placeholder {
+    color: #666666 !important;   /* Dark grey placeholder for readability */
 }
 
 input:focus, textarea:focus {
-    border: 2px solid #007ACC !important;  /* Accent Blue Focus */
+    border: 2px solid #007ACC !important;
     box-shadow: 0 0 6px #007ACC;
     outline: none !important;
     transition: 0.2s ease;
 }
 
-/* ---------- CHAT BUBBLES ---------- */
-.stChatMessage {
-    background: #FFFFFF !important;  /* Light Grey Bubble */
-    border-radius: 10px;
-    padding: 16px;
-    margin-bottom: 10px;
-    color: #111111;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-}
-
 /* ---------- BUTTONS ---------- */
 button {
+    color: #111111 !important;      /* Force Button Text Black */
+    background-color: #E9ECEF !important;  /* Light Grey Background */
     border-radius: 6px !important;
+}
+
+button:hover {
+    background-color: #DDE1E4 !important;  /* Slightly darker on hover */
 }
 
 /* ---------- RESPONSIVE ---------- */
@@ -120,16 +131,15 @@ button {
 </style>
 """, unsafe_allow_html=True)
 
-# --- CLEAN TYPEWRITER HEADER ---
+# --- TYPEWRITER HEADER ---
 st.markdown("""
 <div class="typewriter-container">
     <div class="typewriter-text">PDC RAG CHATBOT BY MUZAMMIL YASIR</div>
 </div>
 """, unsafe_allow_html=True)
 
-# --- SOLID MAIN TITLE ---
+# --- MAIN TITLE ---
 st.title("Ask Neura Thread")
-
 # --- Chat History Setup ---
 if 'messages' not in st.session_state:
     st.session_state.messages = []
