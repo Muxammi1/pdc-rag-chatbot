@@ -35,14 +35,14 @@ st.markdown("""
 # --- Custom CSS for Dark UI and Animation ---
 st.markdown("""
     <style>
-/* ---------- GLOBAL BASE ---------- */
+/* ---------- BASE COLORS ---------- */
 body, .main, .stApp {
-    background-color: #FFFFFF;  /* Pure White */
-    color: #111111;             /* Deep Black */
+    background: #FFFFFF;  /* Pure White */
+    color: #111111;       /* Deep Black */
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* ---------- TYPEWRITER HEADER ---------- */
+/* ---------- HEADER ---------- */
 .typewriter-container {
     display: flex;
     justify-content: center;
@@ -51,7 +51,7 @@ body, .main, .stApp {
 
 .typewriter-text {
     overflow: hidden;
-    border-right: 2px solid #007ACC;  /* Blue Caret */
+    border-right: 2px solid #007ACC;
     white-space: nowrap;
     letter-spacing: 0.06em;
     animation: typing 2.5s steps(40, end), blink-caret 0.75s step-end infinite;
@@ -72,7 +72,7 @@ body, .main, .stApp {
 
 /* ---------- MAIN TITLE ---------- */
 h1 {
-    color: #111111;  /* Black Title */
+    color: #111111;
     font-weight: 900;
     border-bottom: 3px solid #007ACC;
     display: inline-block;
@@ -80,25 +80,29 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* ---------- CHAT BUBBLES ---------- */
+/* ---------- CHAT BUBBLES (and CHILD TEXT!) ---------- */
 .stChatMessage {
     background: #F2F4F5 !important;  /* Light Grey Bubble */
     border-radius: 10px;
     padding: 16px;
     margin-bottom: 12px;
-    color: #111111 !important;  /* Force Black Text */
     box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
-/* ---------- INPUT FIELD ---------- */
+/* FORCE TEXT COLOR INSIDE BUBBLES */
+.stChatMessage * {
+    color: #111111 !important;   /* Bulletproof: force all children to black */
+}
+
+/* ---------- INPUT & PLACEHOLDER ---------- */
 input, textarea {
     border-radius: 8px !important;
-    color: #111111 !important;   /* Force Black Text */
-    background-color: #FFFFFF !important;  /* White background */
+    color: #111111 !important;
+    background: #FFFFFF !important;
 }
 
 input::placeholder, textarea::placeholder {
-    color: #666666 !important;   /* Dark grey placeholder for readability */
+    color: #666666 !important;
 }
 
 input:focus, textarea:focus {
@@ -108,15 +112,15 @@ input:focus, textarea:focus {
     transition: 0.2s ease;
 }
 
-/* ---------- BUTTONS ---------- */
+/* ---------- BUTTON ---------- */
 button {
-    color: #111111 !important;      /* Force Button Text Black */
-    background-color: #E9ECEF !important;  /* Light Grey Background */
+    color: #111111 !important;
+    background: #E9ECEF !important;
     border-radius: 6px !important;
 }
 
 button:hover {
-    background-color: #DDE1E4 !important;  /* Slightly darker on hover */
+    background: #DDE1E4 !important;
 }
 
 /* ---------- RESPONSIVE ---------- */
@@ -138,8 +142,9 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --- MAIN TITLE ---
+# --- TITLE ---
 st.title("Ask Neura Thread")
+
 # --- Chat History Setup ---
 if 'messages' not in st.session_state:
     st.session_state.messages = []
