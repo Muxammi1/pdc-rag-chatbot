@@ -1,4 +1,6 @@
 import os
+os.environ["STREAMLIT_WATCHER_TYPE"] = "none"
+
 import warnings
 import logging
 from datetime import datetime
@@ -33,12 +35,15 @@ st.markdown("""
 # --- Custom CSS for Dark UI and Animation ---
 st.markdown("""
     <style>
+    /* Global Background and Text */
     body {
-        background-color: #121212;
-        color: #E0E0E0;
+        background-color: #FFFFFF;
+        color: #111111;
+        font-family: 'Segoe UI', sans-serif;
     }
+
     .main {
-        background-color: #1E1E1E;
+        background-color: #FFFFFF;
     }
 
     /* Typewriter Header */
@@ -46,21 +51,21 @@ st.markdown("""
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .typewriter-text {
         overflow: hidden;
-        border-right: .15em solid #FF7E00;
+        border-right: .15em solid #007ACC;
         white-space: nowrap;
         margin: 0 auto;
         letter-spacing: .08em;
         animation: 
-            typing 4s steps(40, end),
+            typing 3s steps(40, end),
             blink-caret .75s step-end infinite;
-        font-size: 20px;
-        font-family: 'Segoe UI', monospace;
-        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        color: #111111;
     }
 
     @keyframes typing {
@@ -70,56 +75,57 @@ st.markdown("""
 
     @keyframes blink-caret {
         from, to { border-color: transparent }
-        50% { border-color: #FF7E00; }
+        50% { border-color: #007ACC; }
     }
 
-    /* Title Pulse Animation */
+    /* Title Styling with Subtle Pulse */
     .stApp h1 {
-        animation: pulse 4s ease-in-out infinite;
-        color: white;
-        font-family: 'Segoe UI', sans-serif;
+        animation: pulse 5s ease-in-out infinite;
+        color: #111111;
+        font-weight: 800;
     }
 
     @keyframes pulse {
-        0% { color: white; }
-        50% { color: #DDDDDD; }
-        100% { color: white; }
+        0% { color: #111111; }
+        50% { color: #007ACC; }
+        100% { color: #111111; }
     }
 
-    /* Input Glow */
+    /* Input Focus Styling */
     input:focus {
-        border: 2px solid #00BFFF !important;
-        box-shadow: 0 0 6px #00BFFF;
+        border: 2px solid #007ACC !important;
+        box-shadow: 0 0 8px #007ACC;
         transition: all 0.3s ease-in-out;
     }
 
-    /* Chat Bubbles */
+    /* Chat Message Bubbles (Light Grey) */
     .stChatMessage {
-        background-color: #222 !important;
+        background-color: #F5F5F5 !important;
         border-radius: 8px;
-        padding: 8px;
-    }
-    /* Responsive tweaks for mobile screens */
-@media (max-width: 600px) {
-    .typewriter-text {
-        font-size: 14px;
-        letter-spacing: 0.05em;
+        padding: 12px;
+        color: #111111;
     }
 
-    .stApp h1 {
-        font-size: 20px;
-    }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+        .typewriter-text {
+            font-size: 16px;
+            letter-spacing: 0.05em;
+        }
 
-    .main, .block-container {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-}
+        .stApp h1 {
+            font-size: 24px;
+        }
 
+        .main, .block-container {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+    }
     </style>
 """, unsafe_allow_html=True)
 
-# --- Animated Header ---
+# --- Animated Typewriter Header ---
 st.markdown("""
     <div class="typewriter-container">
         <div class="typewriter-text">PDC RAG CHATBOT BY MUZAMMIL YASIR</div>
