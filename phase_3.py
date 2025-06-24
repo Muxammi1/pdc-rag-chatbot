@@ -95,7 +95,7 @@ input:focus, textarea:focus {
 
 /* ---------- CHAT BUBBLES ---------- */
 .stChatMessage {
-    background: #F2F4F5 !important;  /* Light Grey Bubble */
+    background: #FFFFFF !important;  /* Light Grey Bubble */
     border-radius: 10px;
     padding: 16px;
     margin-bottom: 10px;
